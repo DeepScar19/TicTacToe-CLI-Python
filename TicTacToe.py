@@ -1,88 +1,87 @@
 from time import sleep
 import random
-global felder
+global fields
 
-def felder_ausgeben():
+def print_fields():
     for i in range(3):
-        print(felder[i*3] + " | " +felder[i*3+1] + " | " + felder[i*3+2] )
+        print(fields[i*3] + " | " + fields[i*3+1] + " | " + fields[i*3+2] )
 
-def zufalls_ecken():
-    ecken = []
+def get_random_corner():
+    corners = []
     for i in [0,2,6,8]:
-        if felder[i] == str(i+1):
-            ecken.append(i)
+        if fields[i] == str(i+1):
+            corners.append(i)
+    return random.choice(corners)
 
-    return random.choice(ecken)
-
-def zufalls_kanten():
-    kanten = []
+def get_random_side():
+    sides = []
     for i in [1,3,5,7]:
-        if felder[i] == str(i+1):
-            kanten.append(i)
-    return random.choice(kanten)
+        if fields[i] == str(i+1):
+            sides.append(i)
+    return random.choice(sides)
 
-def prüfe_zumachen(player):
+def check_close(player):
     for i in range(3):
         #Prüfe frei waagerecht links
-        if felder[i*3+1] == player and felder[i*3+2] == player and felder[i*3] == str(i*3+1):
+        if fields[i*3+1] == player and fields[i*3+2] == player and fields[i*3] == str(i*3+1):
             return i*3
         #Prüfe frei waagerecht mitte
-        elif felder[i*3] == player and felder[i*3+2] == player and felder[i*3+1] == str(i*3+2):
+        elif fields[i*3] == player and fields[i*3+2] == player and fields[i*3+1] == str(i*3+2):
             return i*3+1
         #Prüfe frei waagerecht rechts
-        elif felder[i*3] == player and felder[i*3+1] == player and felder[i*3+2] == str(i*3+3):
+        elif fields[i*3] == player and fields[i*3+1] == player and fields[i*3+2] == str(i*3+3):
             return i*3+2    
         #Prüfe frei senkrecht unten
-        elif felder[i] == player and felder[i+3] == player and felder[i+6] == str(i+7):
+        elif fields[i] == player and fields[i+3] == player and fields[i+6] == str(i+7):
             return i+6
         #Prüfe frei senkrecht mitte
-        elif felder[i] == player and felder[i+6] == player and felder[i+3] == str(i+4):
+        elif fields[i] == player and fields[i+6] == player and fields[i+3] == str(i+4):
             return i+3
         #Prüfe frei senkrecht oben
-        elif felder[i+3] == player and felder[i+6] == player and felder[i] == str(i+1):
+        elif fields[i+3] == player and fields[i+6] == player and fields[i] == str(i+1):
             return i
     #Prüfe frei diagonal oben links unten rechts oben
-    if felder[4] == player and felder[8] == player and felder[0] == "1":
+    if fields[4] == player and fields[8] == player and fields[0] == "1":
         return 0
     #Prüfe frei diagonal oben links unten rechts mitte
-    elif felder[0] == player and felder[8] == player and felder[4] == "5":
+    elif fields[0] == player and fields[8] == player and fields[4] == "5":
         return 4
     #Prüfe frei diagonal oben links unten rechts unten
-    elif felder[0] == player and felder[4] == player and felder[8] == "9":
+    elif fields[0] == player and fields[4] == player and fields[8] == "9":
         return 8
     #Prüfe frei diagonal unten links oben rechts oben
-    elif felder[4] == player and felder[6] == player and felder[2] == "3":
+    elif fields[4] == player and fields[6] == player and fields[2] == "3":
         return 2
     #Prüfe frei diagonal unten links oben rechts mitte
-    elif felder[2] == player and felder[6] == player and felder[4] == "5":
+    elif fields[2] == player and fields[6] == player and fields[4] == "5":
         return 4
     #Prüfe frei diagonal unten links oben rechts unten
-    elif felder[2] == player and felder[4] == player and felder[6] == "7":
+    elif fields[2] == player and fields[4] == player and fields[6] == "7":
         return 6
 
-def ende_prüfung():
-    gewonnen = False
-    global Felder
-     #Felder waagerecht
+def check_finish():
+    finished = False
+    global fields
+    #fields waagerecht
     for i in range(3):
-        if felder[i*3] == felder[i*3+1] and felder[i*3+1] == felder[i*3+2]:
-            print(f"Spieler {felder[i*3]} hat gewonnen!")
-            gewonnen = True
-        if felder[i] == felder[i+3] and felder[i] == felder[i+6]:
-            print(f"Spieler {felder[i]} hat gewonnen!")
-            gewonnen = True
-    #Felder diagonal oben links unten rechts
-    if felder[0] == felder [4] and felder[4] == felder[8]:
-        print(f"Spieler {felder[0]} hat gewonnen!")
-        gewonnen = True
-    #Felder diagonal unten links oben rechts
-    if felder[6] == felder [4] and felder[4] == felder[2]:
-        print(f"Spieler {felder[6]} hat gewonnen!")
-        gewonnen = True
-    return gewonnen
+        if fields[i*3] == fields[i*3+1] and fields[i*3+1] == fields[i*3+2]:
+            print(f"Spieler {fields[i*3]} hat gewonnen!")
+            finished = True
+        if fields[i] == fields[i+3] and fields[i] == fields[i+6]:
+            print(f"Spieler {fields[i]} hat gewonnen!")
+            finished = True
+    #fields diagonal oben links unten rechts
+    if fields[0] == fields [4] and fields[4] == fields[8]:
+        print(f"Spieler {fields[0]} hat gewonnen!")
+        finished = True
+    #fields diagonal unten links oben rechts
+    if fields[6] == fields [4] and fields[4] == fields[2]:
+        print(f"Spieler {fields[6]} hat gewonnen!")
+        finished = True
+    return finished
 
 def main():
-    global felder
+    global fields
     computerplay = False
     while True:
         mode = input("Möchtest du gegen den Computer [c] oder gegen einen Menschen [m] spielen? ")
@@ -94,104 +93,104 @@ def main():
             break
         else:
             print("Gebe eine richtige Antwort ein!")
-    felder = ["1","2","3","4","5","6","7","8","9"]
-    spieler = "X"
-    felder_ausgeben()
-    ende = False
-    while ende == False:
+    fields = ["1","2","3","4","5","6","7","8","9"]
+    player = "X"
+    print_fields()
+    end = False
+    while end == False:
         if computerplay == False:
-            print(f"Spieler {spieler} ist dran!")
+            print(f"Spieler {player} ist dran!")
             spielzug = input("Bitte ein Feld eingeben: ")
             while True:
-                    if spielzug in felder and spielzug != "X" and spielzug != "0":
+                    if spielzug in fields and spielzug != "X" and spielzug != "0":
                         print("Spielzug: ", spielzug)
                         break
                     else:
                         print("Gebe eine gültige Zahl ein!")
                         spielzug = input("Bitte ein Feld eingeben: ")
-            felder[int(spielzug)-1] = spieler
-            if spieler == "X":
-                spieler = "0"
+            fields[int(spielzug)-1] = player
+            if player == "X":
+                player = "0"
             else:
-                spieler = "X"
-            felder_ausgeben()
-            ende = True
+                player = "X"
+            print_fields()
+            end = True
             for i in ["1","2","3","4","5","6","7","8","9"]:
-                if i in felder:
-                    ende = False
-            if ende == True:
+                if i in fields:
+                    end = False
+            if end == True:
                 print("Unentschieden")
                 break
-            ende = ende_prüfung()
+            end = check_finish()
         else:
-            if spieler == "X":
+            if player == "X":
                 print("Du (X) bist dran!")
                 spielzug = input("Bitte ein Feld eingeben: ")
                 while True:
-                        if spielzug in felder and spielzug != "X" and spielzug != "0":
+                        if spielzug in fields and spielzug != "X" and spielzug != "0":
                             print("Spielzug: ", spielzug)
                             break
                         else:
                             print("Gebe eine gültige Zahl ein!")
                             spielzug = input("Bitte ein Feld eingeben: ")
-                felder[int(spielzug)-1] = spieler
-                felder_ausgeben()
-                ende = True
+                fields[int(spielzug)-1] = player
+                print_fields()
+                end = True
                 for i in ["1","2","3","4","5","6","7","8","9"]:
-                    if i in felder:
-                        ende = False
-                if ende == True:
+                    if i in fields:
+                        end = False
+                if end == True:
                     print("Unentschieden")
                     break
-                spieler = "0"
+                player = "0"
             else:
                 print("Der Computer (0) ist dran!")
-                if "0" not in felder:
-                    if felder[4] == "5":
-                        felder[4] = "0"
+                if "0" not in fields:
+                    if fields[4] == "5":
+                        fields[4] = "0"
                         print("Spielzug des Computers: 5")
                     else:
-                        random_ecke = zufalls_ecken()
-                        felder[random_ecke] = "0"
-                        print("Spielzug des Computers:", random_ecke + 1)
-                elif felder[0] == "X" and felder[8] == "X" and felder.count("0") == 1 or felder[2] == "X" and felder[6] == "X" and felder.count("0") == 1:
-                    random_kante = zufalls_kanten()
-                    felder[random_kante] = "0"
+                        random_corner = get_random_corner()
+                        fields[random_corner] = "0"
+                        print("Spielzug des Computers:", random_corner + 1)
+                elif fields[0] == "X" and fields[8] == "X" and fields.count("0") == 1 or fields[2] == "X" and fields[6] == "X" and fields.count("0") == 1:
+                    random_kante = get_random_side()
+                    fields[random_kante] = "0"
                     print("Spielzug des Computers:", random_kante + 1)
-                elif prüfe_zumachen("0") != None:
-                    print("Spielzug des Computers:", prüfe_zumachen("0") + 1)
-                    felder[prüfe_zumachen("0")] = "0"
-                elif prüfe_zumachen("X") != None:
-                    print("Spielzug des Computers:", prüfe_zumachen("X") + 1)
-                    felder[prüfe_zumachen("X")] = "0"
+                elif check_close("0") != None:
+                    print("Spielzug des Computers:", check_close("0") + 1)
+                    fields[check_close("0")] = "0"
+                elif check_close("X") != None:
+                    print("Spielzug des Computers:", check_close("X") + 1)
+                    fields[check_close("X")] = "0"
                 else:
                     try:
-                        random_ecke = zufalls_ecken()
-                        felder[random_ecke] = "0"
-                        print("Spielzug des Computers:", random_ecke + 1)
+                        random_corner = get_random_corner()
+                        fields[random_corner] = "0"
+                        print("Spielzug des Computers:", random_corner + 1)
                     except:
-                        random_kante = zufalls_kanten()
-                        felder[random_kante] = "0"
+                        random_kante = get_random_side()
+                        fields[random_kante] = "0"
                         print("Spielzug des Computers:", random_kante + 1)
-                felder_ausgeben()
-                ende = ende_prüfung()
-                spieler = "X"
+                print_fields()
+                end = check_finish()
+                player = "X"
 print("TicTacToe - Das Spiel")
 print("-----------------------------\n")
-ende = False
-while ende == False:
+end = False
+while end == False:
     main()
     while True: #Weiterspielen-Abfrage
-        weiterspielen = input("Möchtest du weiterspielen? [y/n]")
-        if weiterspielen == "y":
-            ende = False
+        new_round = input("Möchtest du weiterspielen? [y/n]")
+        if new_round == "y":
+            end = False
             break
-        elif weiterspielen == "n":
-            print("TicTacToe wird beendet ", end = "", flush= True)
+        elif new_round == "n":
+            print("TicTacToe wird beendt ", end = "", flush= True)
             for i in range(3):
                 sleep(0.7)
                 print(".", end = "", flush=True)
-            ende = True
+            end = True
             sleep(3)
             print("\nTicTacToe beendet!")
             break
