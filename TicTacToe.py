@@ -169,9 +169,9 @@ def main():
                         fields[random_corner] = "0"
                         print("Spielzug des Computers:", random_corner + 1)
                     except:
-                        random_kante = get_random_side()
-                        fields[random_kante] = "0"
-                        print("Spielzug des Computers:", random_kante + 1)
+                        random_side = get_random_side()
+                        fields[random_side] = "0"
+                        print("Spielzug des Computers:", random_side + 1)
                 print_fields()
                 end = check_finish()
                 player = "X"
