@@ -22,47 +22,47 @@ def get_random_side():
 
 def check_close(player):
     for i in range(3):
-        #Prüfe frei waagerecht links
+        #Check open horizontal left
         if fields[i*3+1] == player and fields[i*3+2] == player and fields[i*3] == str(i*3+1):
             return i*3
-        #Prüfe frei waagerecht mitte
+        #Check open horizontal mitte
         elif fields[i*3] == player and fields[i*3+2] == player and fields[i*3+1] == str(i*3+2):
             return i*3+1
-        #Prüfe frei waagerecht rechts
+        #Check open horizontal rechts
         elif fields[i*3] == player and fields[i*3+1] == player and fields[i*3+2] == str(i*3+3):
             return i*3+2    
-        #Prüfe frei senkrecht unten
+        #Check open vertical bottom
         elif fields[i] == player and fields[i+3] == player and fields[i+6] == str(i+7):
             return i+6
-        #Prüfe frei senkrecht mitte
+        #Check open vertical mitte
         elif fields[i] == player and fields[i+6] == player and fields[i+3] == str(i+4):
             return i+3
-        #Prüfe frei senkrecht oben
+        #Check open vertical top
         elif fields[i+3] == player and fields[i+6] == player and fields[i] == str(i+1):
             return i
-    #Prüfe frei diagonal oben links unten rechts oben
+    #Check open diagonal top left bottom rechts top
     if fields[4] == player and fields[8] == player and fields[0] == "1":
         return 0
-    #Prüfe frei diagonal oben links unten rechts mitte
+    #Check open diagonal top left bottom rechts mitte
     elif fields[0] == player and fields[8] == player and fields[4] == "5":
         return 4
-    #Prüfe frei diagonal oben links unten rechts unten
+    #Check open diagonal top left bottom rechts bottom
     elif fields[0] == player and fields[4] == player and fields[8] == "9":
         return 8
-    #Prüfe frei diagonal unten links oben rechts oben
+    #Check open diagonal bottom left top rechts top
     elif fields[4] == player and fields[6] == player and fields[2] == "3":
         return 2
-    #Prüfe frei diagonal unten links oben rechts mitte
+    #Check open diagonal bottom left top rechts mitte
     elif fields[2] == player and fields[6] == player and fields[4] == "5":
         return 4
-    #Prüfe frei diagonal unten links oben rechts unten
+    #Check open diagonal bottom left top rechts bottom
     elif fields[2] == player and fields[4] == player and fields[6] == "7":
         return 6
 
 def check_finish():
     finished = False
     global fields
-    #fields waagerecht
+    #fields horizontal
     for i in range(3):
         if fields[i*3] == fields[i*3+1] and fields[i*3+1] == fields[i*3+2]:
             print(f"Spieler {fields[i*3]} hat gewonnen!")
@@ -70,11 +70,11 @@ def check_finish():
         if fields[i] == fields[i+3] and fields[i] == fields[i+6]:
             print(f"Spieler {fields[i]} hat gewonnen!")
             finished = True
-    #fields diagonal oben links unten rechts
+    #fields diagonal top left bottom rechts
     if fields[0] == fields [4] and fields[4] == fields[8]:
         print(f"Spieler {fields[0]} hat gewonnen!")
         finished = True
-    #fields diagonal unten links oben rechts
+    #fields diagonal bottom left top rechts
     if fields[6] == fields [4] and fields[4] == fields[2]:
         print(f"Spieler {fields[6]} hat gewonnen!")
         finished = True
@@ -180,7 +180,7 @@ print("-----------------------------\n")
 end = False
 while end == False:
     main()
-    while True: #Weiterspielen-Abfrage
+    while True: #New Round Query
         new_round = input("Möchtest du weiterspielen? [y/n]")
         if new_round == "y":
             end = False
