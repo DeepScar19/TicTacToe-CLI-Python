@@ -5,5 +5,6 @@ Executable files are WIP, you can download the TicTacToe.py-file and run it in y
 # To-Dos
 - [ ] Implement multilanguage supoort 
 - [ ] Implent curses libary for the CLI
-- [ ] Deglobalize field variable
+- [x] Deglobalize field variable
 - [ ] Create executable files
+- [ ] Create a standaloneclass for the field-methods
