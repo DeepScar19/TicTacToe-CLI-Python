@@ -8,3 +8,4 @@ Executable files are WIP, you can download the TicTacToe.py-file and run it in y
 - [x] Deglobalize field variable
 - [ ] Create executable files
 - [ ] Create a standaloneclass for the field-methods
+- [ ] Add custom player option
