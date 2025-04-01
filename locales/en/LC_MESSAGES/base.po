@@ -86,3 +86,6 @@ msgstr ""
 #: TicTacToe.py:204
 msgid "Gebe eine richtige Antwort an!"
 msgstr "Please give a valid answer!"
+
+msgid "Spieler {winner} hat gewonnen!"
+msgstr "Player {winner} has won!"

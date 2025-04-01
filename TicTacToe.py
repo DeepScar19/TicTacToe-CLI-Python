@@ -79,7 +79,7 @@ def check_finish(f):
     if f[6] == f [4] and f[4] == f[2]:
         winner = f[6]
     if winner != None:
-        formatted_text = _("Spieler {winner} hat gewonnen").format(winner = winner)
+        formatted_text = _("Spieler {winner} hat gewonnen!").format(winner = winner)
         print(formatted_text)
         finished = True
     return finished
