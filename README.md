@@ -5,7 +5,7 @@ Executable files are WIP, you can download the TicTacToe.py-file and run it in y
 # To-Dos
 - [ ] Implement multilanguage support 
     - [x] Created base.pot file
-    - [ ] Added language support for english
+    - [x] Added language support for english
     - [ ] Added language support for french 
 - [ ] Implent curses libary for the CLI
 - [x] Deglobalize field variable
