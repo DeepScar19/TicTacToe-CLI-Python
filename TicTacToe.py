@@ -1,11 +1,11 @@
 from time import sleep
 import random
 import gettext
-
+""" Enable english language
 en = gettext.translation('base', localedir='locales', languages=['en'])
 en.install()
 _ = en.gettext
-
+"""
 def print_fields(f):
     for i in range(3):
         print(f[i*3] + " | " + f[i*3+1] + " | " + f[i*3+2] )
