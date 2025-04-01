@@ -2,7 +2,9 @@ from time import sleep
 import random
 import gettext
 
-_ = gettext.gettext
+en = gettext.translation('base', localedir='locales', languages=['en'])
+en.install()
+_ = en.gettext
 
 def print_fields(f):
     for i in range(3):
@@ -77,7 +79,8 @@ def check_finish(f):
     if f[6] == f [4] and f[4] == f[2]:
         winner = f[6]
     if winner != None:
-        print("Spieler {winner} hat gewonnen".format(winner= winner))
+        formatted_text = _("Spieler {winner} hat gewonnen").format(winner = winner)
+        print(formatted_text)
         finished = True
     return finished
 
@@ -100,18 +103,20 @@ def main():
     end = False
     while end == False:
         if computerplay == False:
-            print(_("Spieler {player} ist dran!".format(player = player)))
+            formatted_text = _("Spieler {player} ist dran!").format(player = player)
+            print(formatted_text)
             print(_("Bitte ein Feld eingeben: "), end = "")
-            spielzug = input()
+            move = input()
             while True:
-                    if spielzug in fields and spielzug != "X" and spielzug != "0":
-                        print(_("Spielzug: {spielzug}".format(spielzug=spielzug)))
+                    if move in fields and move != "X" and move != "0":
+                        formatted_text = _("Spielzug: {move}").format(move=move)
+                        print(formatted_text)
                         break
                     else:
                         print(_("Gebe ein gültiges Feld ein!"))
                         print(_("Bitte ein Feld eingeben: "), end = "")
-                        spielzug = input()
-            fields[int(spielzug)-1] = player
+                        move = input()
+            fields[int(move)-1] = player
             if player == "X":
                 player = "0"
             else:
@@ -127,18 +132,20 @@ def main():
             end = check_finish(fields)
         else:
             if player == "X":
-                print(_("Spieler {player} ist dran!".format(player = player)))
+                formatted_text = _("Spieler {player} ist dran!").format(player = player)
+                print(formatted_text)
                 print(_("Bitte ein Feld eingeben: "), end = "")
-                spielzug = input()
+                move = input()
                 while True:
-                    if spielzug in fields and spielzug != "X" and spielzug != "0":
-                        print(_("Spielzug: {spielzug}".format(spielzug=spielzug)))
+                    if move in fields and move != "X" and move != "0":
+                        formatted_text = _("Spielzug: {move}").format(move=move)
+                        print(formatted_text)
                         break
                     else:
                         print(_("Gebe ein gültiges Feld ein!"))
                         print(_("Bitte ein Feld eingeben: "), end = "")
-                        spielzug = input()
-                fields[int(spielzug)-1] = player
+                        move = input()
+                fields[int(move)-1] = player
                 print_fields(fields)
                 end = True
                 for i in ["1","2","3","4","5","6","7","8","9"]:
@@ -157,26 +164,32 @@ def main():
                     else:
                         random_corner = get_random_corner(fields)
                         fields[random_corner] = "0"
-                        print(_("Spielzug des Computers: {field}".format(field = random_corner + 1)))
+                        formatted_text = _("Spielzug des Computers: {field}").format(field = random_corner + 1)
+                        print(formatted_text)
                 elif fields[0] == "X" and fields[8] == "X" and fields.count("0") == 1 or fields[2] == "X" and fields[6] == "X" and fields.count("0") == 1:
                     random_side = get_random_side(fields)
                     fields[random_side] = "0"
-                    print(_("Spielzug des Computers: {field}".format(field = random_side + 1)))
+                    formatted_text = _("Spielzug des Computers: {field}").format(field = random_side + 1)
+                    print(formatted_text)
                 elif check_close("0", fields) != None:
-                    print(_("Spielzug des Computers: {field}".format(field = check_close("0", fields) + 1)))
+                    formatted_text = _("Spielzug des Computers: {field}").format(field = check_close("0", fields) + 1)
+                    print(formatted_text)
                     fields[check_close("0", fields)] = "0"
                 elif check_close("X", fields) != None:
-                    print(_("Spielzug des Computers: {field}".format(field = check_close("X", fields) + 1)))
+                    formatted_text = _("Spielzug des Computers: {field}").format(field = check_close("X", fields) + 1)
+                    print(formatted_text)
                     fields[check_close("X", fields)] = "0"
                 else:
                     try:
                         random_corner = get_random_corner(fields)
                         fields[random_corner] = "0"
-                        print(_("Spielzug des Computers: {field}".format(field = random_corner + 1)))
+                        formatted_text = _("Spielzug des Computers: {field}").format(field = random_corner + 1)
+                        print(formatted_text)
                     except:
                         random_side = get_random_side(fields)
                         fields[random_side] = "0"
-                        print(_("Spielzug des Computers: {field}".format(field = random_side + 1)))
+                        formatted_text = _("Spielzug des Computers: {field}").format(field = random_side + 1)
+                        print(formatted_text)
                 print_fields(fields)
                 end = check_finish(fields)
                 player = "X"

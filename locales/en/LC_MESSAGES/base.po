@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-01 20:10+0200\n"
+"POT-Creation-Date: 2025-03-31 21:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,65 +21,68 @@ msgstr ""
 msgid ""
 "Möchtest du gegen den Computer [c] oder gegen einen Menschen [m] spielen? "
 msgstr ""
+"Would you like to play against the Computer [c] or another human [m]?"
 
 #: TicTacToe.py:96
 msgid "Gebe eine richtige Antwort ein!"
-msgstr ""
+msgstr "Please type in a valid answer"
 
 #: TicTacToe.py:103 TicTacToe.py:130
 #, python-brace-format
 msgid "Spieler {player} ist dran!"
-msgstr ""
+msgstr "Player {player}'s turn!" 
 
 #: TicTacToe.py:104 TicTacToe.py:112 TicTacToe.py:131 TicTacToe.py:139
 msgid "Bitte ein Feld eingeben: "
-msgstr ""
+msgstr "Please type in a field: "
 
 #: TicTacToe.py:108 TicTacToe.py:135
 #, python-brace-format
 msgid "Spielzug: {move}"
-msgstr ""
+msgstr "Move: {move}"
 
 #: TicTacToe.py:111 TicTacToe.py:138
 msgid "Gebe ein gültiges Feld ein!"
-msgstr ""
+msgstr "Please type in a valid field!"
 
 #: TicTacToe.py:125 TicTacToe.py:148
 msgid "Unentschieden"
-msgstr ""
+msgstr "Draw"
 
 #: TicTacToe.py:152
 msgid "Der Computer (0) ist dran!"
-msgstr ""
+msgstr "Computer's (0) turn! "
 
 #: TicTacToe.py:156
 msgid "Spielzug des Computers: 5"
-msgstr ""
+msgstr "Computer's move: 5"
 
 #: TicTacToe.py:160 TicTacToe.py:164 TicTacToe.py:166 TicTacToe.py:169
 #: TicTacToe.py:175 TicTacToe.py:179
 #, python-brace-format
-msgid "Spielzug des Computers: {field}"
+msgid "Computer's move: {field}"
 msgstr ""
 
 #: TicTacToe.py:183
 msgid "TicTacToe - Das Spiel"
-msgstr ""
+msgstr "TicTacToe - The Game"
 
 #: TicTacToe.py:189
 msgid "Möchtest du weiterspielen? [y/n] "
-msgstr ""
+msgstr "Would you like to continue playing? [y/n]"
 
 #: TicTacToe.py:195
 msgid "TicTacToe wird beendet "
-msgstr ""
+msgstr "TicTacToe is terminated"
 
 #: TicTacToe.py:201
 msgid ""
 "\n"
 "TicTacToe beendet!"
-msgstr ""
+msgstr "" 
+"\n" 
+"TicTacToe terminated"
 
 #: TicTacToe.py:204
 msgid "Gebe eine richtige Antwort an!"
-msgstr ""
+msgstr "Please give a valid answer!"
