@@ -1,11 +1,8 @@
 from time import sleep
 import random
 import gettext
-""" Enable english language
-en = gettext.translation('base', localedir='locales', languages=['en'])
-en.install()
-_ = en.gettext
-"""
+import locale
+
 def print_fields(f):
     for i in range(3):
         print(f[i*3] + " | " + f[i*3+1] + " | " + f[i*3+2] )
@@ -193,6 +190,17 @@ def main():
                 print_fields(fields)
                 end = check_finish(fields)
                 player = "X"
+
+#Initialise multilanguage support
+system_language, _ = locale.getlocale()
+if system_language.startswith('de'):
+    _ = gettext.gettext
+else:
+    en = gettext.translation('base', localedir='locales', languages=['en'])
+    en.install()
+    _ = en.gettext
+
+#Start Game
 print(_("TicTacToe - Das Spiel"))
 print("-----------------------------\n")
 end = False
