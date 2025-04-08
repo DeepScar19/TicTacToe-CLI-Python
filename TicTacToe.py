@@ -3,6 +3,8 @@ import random
 import gettext
 import locale
 
+
+
 def print_fields(f):
     for i in range(3):
         print(f[i*3] + " | " + f[i*3+1] + " | " + f[i*3+2] )
@@ -81,10 +83,15 @@ def check_finish(f):
         finished = True
     return finished
 
-def main():
+def main(stdscr):
+    def print(text):
+        stdscr.addstr("\n" + "text")
+        stdscr.refresh()
+        stdscr.getch()
+        stdscr.clear()
     computerplay = False
     while True:
-        print(_("Möchtest du gegen den Computer [c] oder gegen einen Menschen [m] spielen? "), end = "")
+        print(_("Möchtest du gegen den Computer [c] oder gegen einen Menschen [m] spielen? "))
         mode = input()
         if mode == "c":
             computerplay = True
@@ -102,7 +109,7 @@ def main():
         if computerplay == False:
             formatted_text = _("Spieler {player} ist dran!").format(player = player)
             print(formatted_text)
-            print(_("Bitte ein Feld eingeben: "), end = "")
+            print(_("Bitte ein Feld eingeben: "))
             move = input()
             while True:
                     if move in fields and move != "X" and move != "0":
@@ -111,7 +118,7 @@ def main():
                         break
                     else:
                         print(_("Gebe ein gültiges Feld ein!"))
-                        print(_("Bitte ein Feld eingeben: "), end = "")
+                        print(_("Bitte ein Feld eingeben: "))
                         move = input()
             fields[int(move)-1] = player
             if player == "X":
