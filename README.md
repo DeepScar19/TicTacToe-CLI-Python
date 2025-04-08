@@ -8,6 +8,7 @@ Executable files are WIP, you can download the TicTacToe.py-file and run it in y
     - [x] Added language support for english
     - [ ] Added language support for french 
 - [ ] Implent curses libary for the CLI
+    - [x] Overwrited print function
 - [x] Deglobalize field variable
 - [ ] Create executable files
 - [ ] Create a standaloneclass for the field-methods
